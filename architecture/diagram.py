@@ -7,8 +7,9 @@ class Person():
 #Alle classes skal inherite fra personen
 class Student():
     student_id = 1
-    major = "" #Studieretning
-    minor = [] #Andre fag
+    klasse = ""
+    valgfag = ""
+    teknikfag = ""
 
 class Teacher():
     staff_id = 1
@@ -18,6 +19,5 @@ class Teacher():
 class Subject():
     subject_id = 1
     name = ""
-    description = ""
     taught_by = "" #henter staff_id
-    taught_to = "" #Henter student class
+    taught_to = [] #Henter student class
