@@ -6,6 +6,7 @@ from flask import request
 from werkzeug.urls import url_parse
 from app.models import Subject, Student
 from flask_login import login_required
+from datetime import datetime
 
 @app.route('/')
 @app.route('/index')
@@ -49,3 +50,12 @@ def register():
         flash('Congratulations, you are now a registered user!')
         return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
+
+
+@app.route('/user/<username>')
+@login_required
+def user(username):
+    user = Student.query.filter_by(username=username).first_or_404()
+    subject = Subject.query.get(1)
+    subjects = [{'Eleven': Student.username, 'Fag': Subject.subject_name}]
+    return render_template('user.html', user=user, subjects=subject)
